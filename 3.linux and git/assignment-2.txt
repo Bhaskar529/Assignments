@@ -1,0 +1,24 @@
+1. create function which takes file name as argument and return 
+
+   number of lines presents in the file.
+================================================================
+#!/bin/bash
+
+countlines()
+{
+ filename=$1
+ if [ -e $ filename ] 
+ then
+  echo "file is present"
+  lines=$(wc -l < "$filename")
+  echo "number of lines present in the file system is $lines"
+  words=$(wc -w < "$filename")
+  echo "number of words in the file is $words"
+ else 
+   echo "no file present"
+ fi
+  
+
+}
+countlines "vaiable.sh"
+countlines "largest.sh"
