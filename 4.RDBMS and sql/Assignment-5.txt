@@ -1,0 +1,71 @@
+select Name from Products;
+Select the names and the prices of all the products in the store.
+select name, price from products;
+
+
+select name from products where price <= 200;
+
+select * from products where price between 60 and 120;
+select * from products where price >= 60 and price <= 120;
+
+
+select name, price*100 from products;
+
+select name, concat(price*100, ' cents') from products;
+
+
+select avg(price) from products;
+select sum(price)/count(price) from products;
+ 
+
+select avg(price) from products where  Manufacturer = 2;
+
+
+select count(*) from products where price>=180;
+
+select name, price from products where price>=180 order by price desc, name asc;
+
+select a.*, b.name from products a join Manufacturers b on(a.manufacturer = b.code);
+select a.*, b.name from products a, Manufacturers b where a.manufacturer = b.code;
+
+select a.name, a.price, b.name from products a join Manufacturers b on(a.manufacturer = b.code);
+
+SELECT Products.Name, Price, Manufacturers.Name
+   FROM Products INNER JOIN Manufacturers
+   ON Products.Manufacturer = Manufacturers.Code;
+
+SELECT AVG(Price), Manufacturer
+    FROM Products
+GROUP BY Manufacturer;
+
+select avg(a.price), b.name 
+from Products a join Manufacturers b 
+on a.manufacturer = b.code
+group by b.name;
+
+select avg(a.price), b.name 
+from Manufacturers b join Products a 
+on b.code = a.Manufacturer
+group by b.name
+having avg(a.price)>=150;
+
+SELECT AVG(Price), Manufacturers.Name
+   FROM Products, Manufacturers
+   WHERE Products.Manufacturer = Manufacturers.Code
+   GROUP BY Manufacturers.Name
+   HAVING AVG(Price) >= 150;
+   
+
+select name, price from Products 
+where price = (
+select min(price)
+from products);
+
+SELECT name,price
+  FROM Products
+  ORDER BY price ASC
+  LIMIT 1;
+  
+
+
+
